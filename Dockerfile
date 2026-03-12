@@ -3,8 +3,8 @@ FROM node:20-alpine AS base
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Install ffmpeg (needed for video assembly)
-RUN apk add --no-cache ffmpeg
+# Install ffmpeg with libass for subtitle burn-in, and fonts for CJK subtitles
+RUN apk add --no-cache ffmpeg font-noto-cjk
 
 # --- Dependencies ---
 FROM base AS deps
